@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Packt_MERN_FullStackDevelopment_v2.iml" filepath="$PROJECT_DIR$/.idea/Packt_MERN_FullStackDevelopment_v2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/hands-on-mern.iml" filepath="$PROJECT_DIR$/.idea/hands-on-mern.iml" />
     </modules>
   </component>
 </project>
