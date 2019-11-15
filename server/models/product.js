@@ -1,3 +1,5 @@
+import mongoose, {Schema} from "mongoose";
+
 export default class product {
     constructor({ id, name, price, images }) {
         this._id = id;
@@ -21,3 +23,11 @@ export default class product {
         images: this._images
     });
 }
+
+export const productSchema = new Schema({
+    name: String,
+    price: Number,
+    images: [],
+});
+
+export const productModel = mongoose.model('Product', productSchema);
