@@ -1,3 +1,5 @@
+import mongoose, {Schema} from "mongoose";
+
 export default class user {
     constructor({ id, username, email, role }) {
         this._id = id;
@@ -21,3 +23,12 @@ export default class user {
         role: this._role
     });
 }
+
+
+export const UserSchema = new Schema({
+    email: String,
+    username: String,
+    role: String,
+});
+
+export const userModel = mongoose.model('User', UserSchema);
