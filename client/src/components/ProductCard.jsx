@@ -11,7 +11,7 @@ class ProductCard extends Component {
     state = {image : this.props.images[0]};
 
     handleMouseover = () => {
-        if(this.state.images.length > 1){
+        if(this.state.image.length > 1){
             this.setState({image: this.props.images[1]})
         }
     };
