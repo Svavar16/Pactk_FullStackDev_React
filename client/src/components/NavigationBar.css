@@ -1,0 +1,15 @@
+.NavigationBar {
+    display: flex;
+    font-family: "Courier New", monospace;
+    margin-top: 2rem;
+}
+
+.NavigationBar a {
+    display: flex;
+    flex: 1;
+    transition: 100ms all;
+}
+
+.NavigationBar a:hover {
+    color: mediumaquamarine;
+}
