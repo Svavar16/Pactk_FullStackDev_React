@@ -8,20 +8,31 @@ import './App.css';
 import Home from './Pages/Home';
 import FormDemo from "./Pages/FormDemo";
 import NotFound from './Pages/NotFound';
+import Cart from "./Pages/Cart";
+import Orders from "./Pages/Orders";
+import Account from './Pages/Account';
+import Category from "./Pages/Category";
+import NavigationBar from "./components/NavigationBar";
 
 
 class App extends Component {
     render(){
       return (
-          <div>
-            <Router>
+        <Router>
+            <div>
+            <NavigationBar isLoggedIn={true} />
                 <Switch>
-                    <Route path="/" exact component={Home}/>
-                    <Route path='/forms' exact component={FormDemo}/>
-                    <Route component={NotFound}/>
+                <Route path="/" exact component={Home}/>
+                <Route path='/forms' exact component={FormDemo}/>
+                <Route path='/cart' exact component={Cart}/>
+                <Route path='/orders' exact component={Orders}/>
+                <Route path='/account' exact component={Account}/>
+                <Route path='/category/:slug' exact component={Category}/>
+                <Route component={NotFound}/>
                 </Switch>
-            </Router>
-          </div>
+            </div>
+        </Router>
+
         )
     };
 }
