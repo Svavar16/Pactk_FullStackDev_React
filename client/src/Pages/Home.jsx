@@ -1,13 +1,24 @@
-import React, {Component} from 'react';
-import ProductList from "../components/ProductList";
-import product from "../data/products";
+import React, { Component } from 'react';
+import ProductList from '../components/ProductList';
+import { getProducts } from '../api/Products';
+import LoadingIndicator from '../components/LoadingIndicator'
 
 class Home extends Component {
-    render() {
-        return (
-            <ProductList products={product} />
-        );
-    }
+	state = { products: [], loading: true };
+
+	componentDidMount = async () => {
+		const products = (await getProducts()) || [];
+		this.setState({ products, loading: false });
+	};
+
+	render() {
+		return(
+			this.state.loading ?
+				<LoadingIndicator /> :
+			<ProductList products={this.state.products} />
+		)
+
+	}
 }
 
 export default Home;

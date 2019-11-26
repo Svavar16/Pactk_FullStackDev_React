@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import {userModel} from "../models/user";
-import {productModel} from "../models/product";
+import {userModel} from "../../client/src/models/user";
+import {productModel} from "../../client/src/models/product";
 import {products, users} from "./data";
 
 mongoose.connect("mongodb://localhost:27017/packtMERNstackDB", {useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true});
