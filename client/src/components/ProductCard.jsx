@@ -8,7 +8,6 @@ class ProductCard extends Component {
             image: this.props.images[0],
         };
     }
-    state = {image : this.props.images[0]};
 
     handleMouseover = () => {
         if(this.state.image.length > 1){
@@ -33,7 +32,7 @@ class ProductCard extends Component {
                     src={this.state.image}
                     onMouseOver={this.handleMouseover}
                     onMouseLeave={this.handleMouseLeave}
-                    alt = ""
+                    alt=""
                 />
                 <h3>{this.props.name}</h3>
                 <p>{this.props.price}</p>

@@ -1,19 +1,19 @@
-import React, {Component} from 'react';
-import './ProductList.css'
+import React, { Component } from 'react';
 import ProductCard from "./ProductCard";
-import products from "../data/products";
+import './ProductList.css'
 
 class ProductList extends Component {
     render() {
         return (
             <div className="ProductList">
-                {products.map((product, index) =>
-                    <div className="app">
+                {this.props.products.map((product, index) =>
                     <ProductCard
-                    {...product}
-                    pull={index % 2 === 0}
+                        key={product.getId()}
+                        name={product.getName()}
+                        images={product.getImages()}
+                        price={product.getFormattedPrice()}
+                        pull={index % 2 !== 0}
                     />
-                    </div>
                 )}
             </div>
         );
