@@ -13,6 +13,7 @@ import Orders from "./Pages/Orders";
 import Account from './Pages/Account';
 import Category from "./Pages/Category";
 import NavigationBar from "./components/NavigationBar";
+import Product from "./Pages/Product";
 
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
                 <Route path='/orders' exact component={Orders}/>
                 <Route path='/account' exact component={Account}/>
                 <Route path='/category/:slug' exact component={Category}/>
+                <Route path='/product/:id' exact component={Product}/>
                 <Route component={NotFound}/>
                 </Switch>
             </div>
