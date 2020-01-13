@@ -11,6 +11,8 @@ import Account from "./Pages/Account";
 import Category from "./Pages/Category";
 import NavigationBar from "./components/NavigationBar";
 import Product from "./Pages/Product";
+import ProductManagement from "./Pages/admin/ProductManagement";
+import UserManagement from "./Pages/admin/UserManagemant";
 
 class App extends Component {
 	constructor(props) {
@@ -64,6 +66,8 @@ class App extends Component {
 						/>
 						<Route path="/orders" exact component={Orders} />
 						<Route path="/account" exact component={Account} />
+						<Route path="/admin/users" exact component={UserManagement} />
+						<Route path="/admin/products" exact component={ProductManagement} />
 						<Route path="/category/:slug" component={Category} />
 						<Route path="/product/:id" component={this.ProductPage} />
 						<Route component={NotFound} />

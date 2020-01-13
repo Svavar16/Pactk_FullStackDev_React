@@ -26,7 +26,7 @@ export default class Cart extends Component {
 						Checkout
 					</PrimaryButton>
 				</div> :
-				<p>Your cart is empty. Add some awesome products! ✨</p>
+				<p>Your cart is empty. Add some awesome products!</p>
 			}
 		</div>
 		);
