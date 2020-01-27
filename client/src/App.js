@@ -13,23 +13,34 @@ import NavigationBar from "./components/NavigationBar";
 import Product from "./Pages/Product";
 import ProductManagement from "./Pages/admin/ProductManagement";
 import UserManagement from "./Pages/admin/UserManagemant";
+import Auth from "./Pages/Auth";
+import { getCurrentUser } from "./api/Auth";
 
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { itemsInCart: store.get('itemsInCart') || [] };
+		this.state = { itemsInCart: store.get('itemsInCart') || [],  user: undefined };
 		this.ProductPage = Product(this.addToCart);
 	}
 
 	componentDidMount = () => {
+		this.authUser();
 		document.addEventListener("visibilitychange", () => {
 			console.log('visibilitychange', document.hidden);
 			if (!document.hidden) {
 				this.setState({
 					itemsInCart: store.get("itemsInCart") || []
 				});
+				this.authUser();
 			}
 		});
+	};
+
+	authUser = async () => {
+		const result = await getCurrentUser();
+		if(result && result.data) {
+			this.setState({user: result.data});
+		}
 	};
 
 	addToCart = item => {
@@ -46,16 +57,20 @@ class App extends Component {
 		store.set("itemsInCart", itemsInCart);
 	};
 
+
+
 	render() {
+		const isLoggedIn = this.state.user && this.state.user._id;
 		return (
 			<Router>
 				<div className="App">
 					<NavigationBar
-						isLoggedIn={true}
+						isLoggedIn={isLoggedIn}
 						itemsInCart={this.state.itemsInCart.length}
 					/>
 					<Switch>
 						<Route path="/" exact component={Home} />
+						<Route path="/auth/:token" exact component={Auth(this.authUser())} />
 						<Route path="/forms" exact component={FormDemo} />
 						<Route
 							path="/cart"

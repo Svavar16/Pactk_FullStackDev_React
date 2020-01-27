@@ -1,8 +1,9 @@
+require('dotenv').config();
 import mongoose from "mongoose";
 
 const DBLink = process.env.DB_URL;
 
-mongoose.connect("mongodb://localhost:27017/packtMERNstackDB", {useNewUrlParser: true, useFindAndModify: false,useUnifiedTopology:true});
+mongoose.connect(DBLink, {useNewUrlParser: true, useFindAndModify: false,useUnifiedTopology:true});
 
 const db = mongoose.connection;
 

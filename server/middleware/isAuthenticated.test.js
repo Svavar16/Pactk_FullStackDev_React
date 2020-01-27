@@ -1,4 +1,4 @@
-import isAuthenticated from "./isAuthenticated";
+import isAuthenticated from "./withAuthentication";
 import logger from "./logger";
 
 test('It calls next()', () => {

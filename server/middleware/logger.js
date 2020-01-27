@@ -3,10 +3,11 @@ export default (req, res, next) => {
         ' => ',
         req.method,
         req.originalUrl,
+        ' || ',
+        'isAuthenticated: ',
+        typeof req.user === 'object',
         'is Admin: ',
         req.isAdmin,
-        'isAuthenticated: ',
-        req.isAuthenticated,
     );
     next();
 };

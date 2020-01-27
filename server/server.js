@@ -1,23 +1,28 @@
+import WithAdminPermission from "./middleware/WithAdminPermission";
 import express from 'express';
 import bodyParser from 'body-parser';
 import logger from './middleware/logger';
-import isAuthenticated from "./middleware/isAuthenticated";
+import withAuthentication from "./middleware/withAuthentication";
 import cors from 'cors';
 import db from './db';
 import getUsersRoutes from './routes/users';
 import getProductRoutes from './routes/products';
-const PORT = process.env.PORT || 4000;
+import getAuthRoutes from './routes/auth';
+require('dotenv').config();
+const PORT = process.env.PORT;
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(isAuthenticated);
+app.use(withAuthentication);
+app.use(WithAdminPermission);
 app.use(logger);
 
 getUsersRoutes(app);
 getProductRoutes(app);
+getAuthRoutes(app);
 
 app.listen(PORT, () => {
     console.log(`> Server is listening on port ${PORT}`);
