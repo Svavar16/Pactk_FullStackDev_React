@@ -1,6 +1,6 @@
 class EmailService {
     sendEmail = (user, token) => {
-        console.log(`[EmailService.sendEmail] The token is: ${token}`)
+        console.log(`[EmailService.sendEmail] to log in as ${user.email} go to http://localhost:3000/auth/${token}`)
     }
 }
 

@@ -19,7 +19,10 @@ import { getCurrentUser } from "./api/Auth";
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { itemsInCart: store.get('itemsInCart') || [],  user: undefined };
+		this.state = {
+			itemsInCart: store.get('itemsInCart') || [],
+			user: undefined,
+		};
 		this.ProductPage = Product(this.addToCart);
 	}
 
@@ -40,6 +43,8 @@ class App extends Component {
 		const result = await getCurrentUser();
 		if(result && result.data) {
 			this.setState({user: result.data});
+		} else {
+			this.setState({ user: undefined })
 		}
 	};
 
@@ -70,7 +75,7 @@ class App extends Component {
 					/>
 					<Switch>
 						<Route path="/" exact component={Home} />
-						<Route path="/auth/:token" exact component={Auth(this.authUser())} />
+						<Route path="/auth/:token" exact component={Auth(this.authUser)} />
 						<Route path="/forms" exact component={FormDemo} />
 						<Route
 							path="/cart"
@@ -81,8 +86,11 @@ class App extends Component {
 						/>
 						<Route path="/orders" exact component={Orders} />
 						<Route path="/account" exact component={Account} />
-						<Route path="/admin/users" exact component={UserManagement} />
-						<Route path="/admin/products" exact component={ProductManagement} />
+
+						{isLoggedIn && this.state.user.role === 'admin'&&
+							<Route path="/admin/users" exact component={UserManagement} />}
+						{isLoggedIn && this.state.user.role === 'admin'&&
+							<Route path="/admin/products" exact component={ProductManagement} />}
 						<Route path="/category/:slug" component={Category} />
 						<Route path="/product/:id" component={this.ProductPage} />
 						<Route component={NotFound} />
