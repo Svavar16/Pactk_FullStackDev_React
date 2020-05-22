@@ -1,13 +1,24 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
+import { getOrders } from "../api/Orders";
+import LoadingIndicator from "../components/LoadingIndicator";
+import OrderSummary from "../components/OrderSummary";
 
 class Orders extends Component {
-    render() {
-        return (
-            <div>
-                <h1>Orders</h1>
-            </div>
-        );
-    }
+	state = { orders: [], loading: true };
+
+	componentDidMount = async () => {
+		const { success, data, error } = (await getOrders()) || [];
+		this.setState({ orders: data || [], loading: false });
+	};
+
+	render() {
+		if (this.state.loading) {
+			return <LoadingIndicator />;
+		}
+		return this.state.orders.map((order) => (
+			<OrderSummary key={order.getId()} order={order} />
+		));
+	}
 }
 
 export default Orders;

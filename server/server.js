@@ -8,6 +8,7 @@ import db from './db';
 import getUsersRoutes from './routes/users';
 import getProductRoutes from './routes/products';
 import getAuthRoutes from './routes/auth';
+import getOrders from './routes/orders';
 require('dotenv').config();
 const PORT = process.env.PORT;
 
@@ -23,6 +24,7 @@ app.use(logger);
 getUsersRoutes(app);
 getProductRoutes(app);
 getAuthRoutes(app);
+getOrders(app);
 
 app.listen(PORT, () => {
     console.log(`> Server is listening on port ${PORT}`);
