@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {SecondaryButton} from './Button';
 import './ProductCard.css'
 
 class ProductCard extends Component {
@@ -32,6 +33,8 @@ class ProductCard extends Component {
                 />
                 <h3>{this.props.name}</h3>
                 <p>{this.props.price}</p>
+                {this.props.withRemoveButton &&
+                    <SecondaryButton onClick={this.props.onRemove}>Remove</SecondaryButton>}
             </div>
         );
     }

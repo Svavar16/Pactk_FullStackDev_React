@@ -17,7 +17,7 @@ export const getCurrentUser = async () => {
 export const login = async (email) =>{
     try{
         await axios.post('/v1/login', { email });
-        return { success: true};
+        return { success: true };
     } catch (error) {
         switch (error.response.status) {
             case 400:

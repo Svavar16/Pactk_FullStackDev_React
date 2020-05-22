@@ -18,7 +18,7 @@ class Account extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
-        this.setState({ loading: true});
+        this.setState({ loading: true });
         const {success, error} = await login(this.state.email);
 
         if(success){
